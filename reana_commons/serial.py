@@ -149,11 +149,6 @@ serial_workflow_schema = {
                         "type": "string",
                         "default": "",
                     },
-                    "c4p_email_address": {
-                        "$id": "#/properties/steps/properties/c4p_email_address",
-                        "type": "string",
-                        "default": "",
-                    },
                     "c4p_additional_requirements": {
                         "$id": "#/properties/steps/properties/c4p_additional_requirements",
                         "type": "string",

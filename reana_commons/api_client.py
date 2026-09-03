@@ -259,7 +259,6 @@ class JobControllerAPIClient(BaseAPIClient):
         c4p_request_gpus="",
         c4p_memory_limit="",
         c4p_notification="",
-        c4p_email_address="",
         c4p_additional_requirements="",
     ):
         """Submit a job to RJC API.
@@ -302,7 +301,6 @@ class JobControllerAPIClient(BaseAPIClient):
         :param c4p_request_gpus: Amount of GPUs requested to process C4P job
         :param c4p_memory_limit: Amount of memory requested to process C4P job
         :param c4p_notification: notification option to process C4P job
-        :param c4p_email_address: user email address to process C4P job
         :param c4p_additional_requirements: Additional requirements requested to process C4P job like choice of a compute site
         :return: Returns a dict with the ``job_id``.
         """
@@ -385,9 +383,6 @@ class JobControllerAPIClient(BaseAPIClient):
 
         if c4p_notification:
             job_spec["c4p_notification"] = c4p_notification
-
-        if c4p_email_address:
-            job_spec["c4p_email_address"] = c4p_email_address
 
         if c4p_additional_requirements:
             job_spec["c4p_additional_requirements"] = c4p_additional_requirements

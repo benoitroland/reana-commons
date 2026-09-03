@@ -434,11 +434,6 @@
                       "title": "C4P Notification",
                       "description": "Notification option used when running the task on Compute4PUNCH."
                     },
-                    "c4p_email_address": {
-                      "type": "string",
-                      "title": "C4P Email Address",
-                      "description": "User email address used when running the task on Compute4PUNCH."
-                    },
                     "c4p_additional_requirements": {
                       "type": "string",
                       "title": "C4P Additional Requirements",

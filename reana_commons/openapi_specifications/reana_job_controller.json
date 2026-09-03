@@ -56,10 +56,6 @@
           "default": "",
           "type": "string"
         },
-        "c4p_email_address": {
-          "default": "",
-          "type": "string"
-        },
         "cmd": {
           "default": "",
           "type": "string"
