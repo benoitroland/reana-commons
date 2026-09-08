@@ -45,15 +45,19 @@
         "c4p_cpu_cores": {
           "type": "string"
         },
-        "c4p_request_gpus": {
-          "default": "",
-          "type": "string"
-        },
         "c4p_memory_limit": {
           "type": "string"
         },
         "c4p_notification": {
-          "default": "",
+          "enum": [
+            "Always",
+            "Complete",
+            "Error",
+            "Never"
+          ],
+          "type": "string"
+        },
+        "c4p_request_gpus": {
           "type": "string"
         },
         "cmd": {
@@ -159,7 +163,7 @@
   "info": {
     "description": "REANA Job Controller API",
     "title": "reana-job-controller",
-    "version": "0.95.0a4"
+    "version": "0.95.0a5"
   },
   "paths": {
     "/apispec": {},
