@@ -106,6 +106,56 @@ def test_critical_errors_reana_yaml(yadage_workflow_spec_loaded):
         validate_reana_yaml(reana_yaml)
 
 
+@pytest.mark.parametrize(
+    "notification",
+    ["Always", "Complete", "Error", "Never"],
+)
+def test_c4p_notification_accepted(notification):
+    """Supported C4P notification options are accepted."""
+    reana_yaml = {
+        "workflow": {
+            "type": "serial",
+            "specification": {
+                "steps": [
+                    {
+                        "commands": ["true"],
+                        "environment": "ubuntu:latest",
+                        "c4p_notification": notification,
+                    }
+                ]
+            },
+        }
+    }
+
+    warnings = validate_reana_yaml(reana_yaml)
+    assert warnings == {}
+
+
+@pytest.mark.parametrize(
+    "bad_notification",
+    ["Start", "always"],
+)
+def test_c4p_notification_rejected(bad_notification):
+    """Unsupported C4P notification options are rejected."""
+    reana_yaml = {
+        "workflow": {
+            "type": "serial",
+            "specification": {
+                "steps": [
+                    {
+                        "commands": ["true"],
+                        "environment": "ubuntu:latest",
+                        "c4p_notification": bad_notification,
+                    }
+                ]
+            },
+        }
+    }
+
+    with pytest.raises(ValidationError):
+        validate_reana_yaml(reana_yaml)
+
+
 def test_bound_error_message_keeps_first_line():
     """The first (informative) line of a multi-line error is kept."""
     error = FileNotFoundError("[Errno 2] No such file or directory: 'rules/common.smk'")

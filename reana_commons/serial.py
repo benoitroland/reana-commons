@@ -147,7 +147,12 @@ serial_workflow_schema = {
                     "c4p_notification": {
                         "$id": "#/properties/steps/properties/c4p_notification",
                         "type": "string",
-                        "default": "",
+                        "enum": [
+                            "Always",
+                            "Complete",
+                            "Error",
+                            "Never",
+                        ],
                     },
                     "c4p_additional_requirements": {
                         "$id": "#/properties/steps/properties/c4p_additional_requirements",
