@@ -419,7 +419,7 @@
                       "title": "C4P CPU Cores",
                       "description": "Number of CPU cores requested from Compute4PUNCH for running the task."
                     },
-                    "c4p_request_gpus": {
+                    "c4p_gpu_count": {
                       "type": "string",
                       "title": "C4P Requested GPUs",
                       "description": "Number of GPUs requested from Compute4PUNCH for running the task."

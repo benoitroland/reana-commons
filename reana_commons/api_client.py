@@ -256,7 +256,7 @@ class JobControllerAPIClient(BaseAPIClient):
         slurm_time="",
         kubernetes_job_timeout: Optional[int] = None,
         c4p_cpu_cores="",
-        c4p_request_gpus="",
+        c4p_gpu_count="",
         c4p_memory_limit="",
         c4p_notification="",
         c4p_additional_requirements="",
@@ -298,7 +298,7 @@ class JobControllerAPIClient(BaseAPIClient):
         :param slurm_time: Maximum timelimit of a Slurm job.
         :param kubernetes_job_timeout: Timeout for the job in seconds.
         :param c4p_cpu_cores: Amount of CPU cores requested to process C4P job
-        :param c4p_request_gpus: Amount of GPUs requested to process C4P job
+        :param c4p_gpu_count: Amount of GPUs requested to process C4P job
         :param c4p_memory_limit: Amount of memory requested to process C4P job
         :param c4p_notification: notification option to process C4P job
         :param c4p_additional_requirements: Additional requirements requested to process C4P job like choice of a compute site
@@ -375,8 +375,8 @@ class JobControllerAPIClient(BaseAPIClient):
         if c4p_cpu_cores:
             job_spec["c4p_cpu_cores"] = c4p_cpu_cores
 
-        if c4p_request_gpus:
-            job_spec["c4p_request_gpus"] = c4p_request_gpus
+        if c4p_gpu_count:
+            job_spec["c4p_gpu_count"] = c4p_gpu_count
 
         if c4p_memory_limit:
             job_spec["c4p_memory_limit"] = c4p_memory_limit

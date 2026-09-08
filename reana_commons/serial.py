@@ -134,8 +134,8 @@ serial_workflow_schema = {
                         "type": "string",
                         "default": "",
                     },
-                    "c4p_request_gpus": {
-                        "$id": "#/properties/steps/properties/c4p_request_gpus",
+                    "c4p_gpu_count": {
+                        "$id": "#/properties/steps/properties/c4p_gpu_count",
                         "type": "string",
                         "default": "",
                     },
