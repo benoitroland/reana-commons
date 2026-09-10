@@ -156,6 +156,88 @@ def test_c4p_notification_rejected(bad_notification):
         validate_reana_yaml(reana_yaml)
 
 
+@pytest.mark.parametrize(
+    "field",
+    ["c4p_cpu_cores", "c4p_gpu_count"],
+)
+@pytest.mark.parametrize(
+    "value",
+    ["", "2"],
+)
+def test_c4p_resource_accepted(field, value):
+    """Valid C4P resource values are accepted."""
+    reana_yaml = {
+        "workflow": {
+            "type": "serial",
+            "specification": {
+                "steps": [
+                    {
+                        "commands": ["true"],
+                        "environment": "ubuntu:latest",
+                        field: value,
+                    }
+                ]
+            },
+        }
+    }
+
+    warnings = validate_reana_yaml(reana_yaml)
+    assert warnings == {}
+
+
+@pytest.mark.parametrize(
+    "field",
+    ["c4p_cpu_cores", "c4p_gpu_count"],
+)
+@pytest.mark.parametrize(
+    "value",
+    ["0", "-2", "2.5", "two", " "],
+)
+def test_c4p_resource_rejected(field, value):
+    """Invalid C4P resource values are rejected."""
+    reana_yaml = {
+        "workflow": {
+            "type": "serial",
+            "specification": {
+                "steps": [
+                    {
+                        "commands": ["true"],
+                        "environment": "ubuntu:latest",
+                        field: value,
+                    }
+                ]
+            },
+        }
+    }
+
+    with pytest.raises(ValidationError):
+        validate_reana_yaml(reana_yaml)
+
+
+@pytest.mark.parametrize(
+    "field",
+    ["c4p_cpu_cores", "c4p_gpu_count"],
+)
+def test_c4p_resource_omitted(field):
+    """Omitting a C4P resource value is accepted."""
+    reana_yaml = {
+        "workflow": {
+            "type": "serial",
+            "specification": {
+                "steps": [
+                    {
+                        "commands": ["true"],
+                        "environment": "ubuntu:latest",
+                    }
+                ]
+            },
+        }
+    }
+
+    warnings = validate_reana_yaml(reana_yaml)
+    assert warnings == {}
+
+
 def test_bound_error_message_keeps_first_line():
     """The first (informative) line of a multi-line error is kept."""
     error = FileNotFoundError("[Errno 2] No such file or directory: 'rules/common.smk'")

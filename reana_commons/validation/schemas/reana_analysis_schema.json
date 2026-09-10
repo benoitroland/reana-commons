@@ -416,12 +416,14 @@
                     },
                     "c4p_cpu_cores": {
                       "type": "string",
+                      "pattern": "^$|^[1-9][0-9]*$",
                       "title": "C4P CPU Cores",
                       "description": "Number of CPU cores requested from Compute4PUNCH for running the task."
                     },
                     "c4p_gpu_count": {
                       "type": "string",
-                      "title": "C4P Requested GPUs",
+                      "pattern": "^$|^[1-9][0-9]*$",
+                      "title": "C4P GPU Count",
                       "description": "Number of GPUs requested from Compute4PUNCH for running the task."
                     },
                     "c4p_memory_limit": {

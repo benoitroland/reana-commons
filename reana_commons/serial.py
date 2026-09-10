@@ -238,7 +238,11 @@ def _expand_parameters(specification, parameters, original=None):
             )
 
 
-HTCONDOR_REQUEST_INTEGER_FIELDS = ("htcondor_request_cpus",)
+HTCONDOR_REQUEST_INTEGER_FIELDS = (
+    "htcondor_request_cpus",
+    "c4p_cpu_cores",
+    "c4p_gpu_count",
+)
 """Step fields that must be a plain positive integer string."""
 
 HTCONDOR_REQUEST_QUANTITY_FIELDS = (
@@ -265,7 +269,8 @@ def check_htcondor_request_parameters(specification):
 
     Validation here is intentionally lightweight:
 
-    * ``htcondor_request_cpus`` must be a positive integer string.
+    * ``htcondor_request_cpus``, ``c4p_cpu_cores`` and ``c4p_gpu_count``
+      must be positive integer strings when provided.
     * ``htcondor_request_memory`` and ``htcondor_request_disk`` must be a
       positive integer with an optional ``K|KB|M|MB|G|GB|T|TB`` suffix
       (case-insensitive). The actual conversion to ``RequestMemory`` MB
