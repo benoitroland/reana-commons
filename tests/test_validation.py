@@ -162,7 +162,7 @@ def test_c4p_notification_rejected(bad_notification):
 )
 @pytest.mark.parametrize(
     "value",
-    ["", "2"],
+    ["2", ""],
 )
 def test_c4p_resource_accepted(field, value):
     """Valid C4P resource values are accepted."""

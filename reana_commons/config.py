@@ -421,6 +421,8 @@ If no runtime namespace is deployed it will default to the infrastructure servic
 account.
 """
 
+HTCONDOR_CPU_GPU_FORMAT = r"^[1-9]\d*$"
+
 HTCONDOR_JOB_FLAVOURS = {
     "espresso": 1200,
     "microcentury": 3600,
