@@ -375,7 +375,8 @@ class JobControllerAPIClient(BaseAPIClient):
         if c4p_cpu_cores:
             job_spec["c4p_cpu_cores"] = c4p_cpu_cores
 
-        if c4p_gpu_count:
+        # Preserve 0 so it reaches the Job Controller and is rejected by validation
+        if c4p_gpu_count is not None:
             job_spec["c4p_gpu_count"] = c4p_gpu_count
 
         if c4p_memory_limit:
